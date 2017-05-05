@@ -1,0 +1,6 @@
+addOne:
+	push r4
+	sub #4, r1
+	mov r1,r4
+
+	mov r12,

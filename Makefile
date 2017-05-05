@@ -8,13 +8,14 @@ LDFLAGS		= -L../lib -L/opt/ti/msp430_gcc/include/
 CC              = msp430-elf-gcc
 AS              = msp430-elf-gcc -mmcu=${CPU} -c
 
-all:main.elf
+all:main.elf 
 
 #additional rules for files
-main.elf: ${COMMON_OBJECTS} main.o init.o buzzer.o  
+main.elf: ${COMMON_OBJECTS} main.o init.o buzzer.o     
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ -lTimer -lLcd -lShape -lCircle -lp2sw 
 
-load: main.elf
+
+load: main.elf 
 	mspdebug rf2500 "prog $^"
 
 clean:

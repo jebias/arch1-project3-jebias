@@ -7,8 +7,10 @@
 #include <shape.h>
 #include "init.h"
 #include "buzzer.h"
+#include "rectangle.h"
 
 // basic struction for the shapes in the game
+/*
 struct Rectangles {
   u_char x;
   u_char y;
@@ -16,7 +18,7 @@ struct Rectangles {
   u_char height;
   u_int color;
 } rectangle;
-
+*/
 struct Rectangles paddle1 = {screenWidth/2,screenHeight-15,30,5,COLOR_GREEN}; // bottom paddle controlled with S1 and S2
 struct Rectangles paddle2 = {screenWidth/2,15,30,5,COLOR_GREEN}; // top paddle controlled with S3 and S4
 struct Rectangles ball = {50,100,5,5,COLOR_RED}; 
@@ -26,7 +28,9 @@ char player1wins = 0; // when score = 2
 char player2wins = 0; // when score = 2
 char gameover = 0; // when a player scores twice
 char buzz = 0; //failed to implement
-
+int test = 0;
+//test = addOne(test);
+//char testas = '0';
 void paintBoard()
 {
   drawString5x7(5,5,"score:",COLOR_ORANGE,COLOR_BLUE); // top score 
@@ -36,7 +40,7 @@ void paintBoard()
   fillRectangle(paddle1.x,paddle1.y,paddle1.width,paddle1.height,paddle1.color); // draw bottom paddle player 1
   fillRectangle(paddle2.x,paddle2.y,paddle2.width,paddle2.height,paddle2.color); // draw top paddle player 2
   fillRectangle(ball.x,ball.y,ball.width,ball.height,ball.color); // draw the ball
-  
+  //  drawChar5x7(70,screenHeight-10,testas,COLOR_ORANGE,COLOR_BLUE);
 }
 
 // loop for moving the paddles
@@ -173,7 +177,9 @@ void main()
   paintBoard();
   
 
-  static char state = 0;
+  //static char state = 0;
+  int state = 0;
+  int next = 1;
   while(1){
   switch(state){
     // start and play game
